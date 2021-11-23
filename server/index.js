@@ -1,20 +1,20 @@
 require('dotenv').config()
-const {MongoClient} = require('mongodb')
+const express = require ('express')
+const mongoose = require ('mongoose')
 
-const mongoClient = new MongoClient(process.env.DB_URL)
+const app = express()
+const PORT = process.env.PORT
 
 const start = async() => {
    try {
-      await mongoClient.connect()
-      const db = mongoClient.db('admin')
-      const result = await db.command({ping: 1})
-      console.log(result);
+      await mongoose.connect (`${process.env.DB_URL}`, {
+         useNewUrlParser: true
+      })
+      console.log(mongoose.connection.readyState);
+      app.listen(PORT, () => console.log(`App has been started on port ${PORT}`))
    } catch (error) {
-      console.log(error);
-   } finally {
-      await mongoClient.close();
-      console.log("Подключение закрыто");
-  }
+      console.log(error.message);
+   }
 }
 
 start()

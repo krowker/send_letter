@@ -3,6 +3,9 @@ const express = require ('express')
 const mongoose = require ('mongoose')
 
 const app = express()
+
+app.use('/api', require('./routes/routes'))
+
 const PORT = process.env.PORT
 
 const start = async() => {

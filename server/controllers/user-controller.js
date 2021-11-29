@@ -38,6 +38,14 @@ class UserController {
          next(e)
       }
    }
+
+   async getContacts (req, res, next){
+      try {
+         
+      } catch (e) {
+         next(e)
+      }
+   }
 }
 
 module.exports = new UserController()

@@ -3,7 +3,7 @@ import React from 'react'
 export const AuthPage = () => {
    return (
       <div>
-         <h1>AuthPage test</h1>
+         <h1>AuthPage test2</h1>
       </div>
    )
 }

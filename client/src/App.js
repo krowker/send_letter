@@ -7,7 +7,7 @@ function App() {
   const routes = useRoutes(false)
 
   return (
-    <Container fixed
+    <Container
       sx={{
         height: '100vh'
       }}

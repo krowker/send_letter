@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
+
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
-//import FormControl from '@mui/material/FormControl'
-//import InputLabel from '@mui/material/InputLabel'
-//import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import { IconButton } from '@mui/material';
 import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
-import Chip from '@mui/material/Chip'
+//import Divider from '@mui/material/Divider'
+//import Chip from '@mui/material/Chip'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { typography } from '@mui/system'
 
 export const AuthPage = () => {
    const [values, setValues] = useState({

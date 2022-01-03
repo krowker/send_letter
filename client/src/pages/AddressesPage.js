@@ -1,9 +1,9 @@
 import React from 'react'
+import { Grid } from '@mui/material'
 
 export const AddressesPage = () => {
    return (
-      <div>
-         <h1>AddressesPage</h1>
-      </div>
+
+            <h1>Adresses</h1>
    )
 }

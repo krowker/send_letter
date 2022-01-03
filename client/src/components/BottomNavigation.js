@@ -40,18 +40,21 @@ export const BottomBar = () => {
                }}
             >
                <BottomNavigationAction
-                  // component={<Link to='addresses' />}
-                  // to='addresses' 
+                  component={Link}
+                  to='addresses' 
                   //value={'addresses'}
                   label='Addresses'
                   icon={<HouseIcon />}
                ></BottomNavigationAction>
                <BottomNavigationAction   
-               value={'notifications'}               
+                  component={Link}
+                  to='notifications'               
                   label='Notifications'
                   icon={<NotificationsIcon />}
                />
                <BottomNavigationAction
+                  component={Link}
+                  to='profile'
                   label='Profile'
                   icon={<PersonIcon />}
                />

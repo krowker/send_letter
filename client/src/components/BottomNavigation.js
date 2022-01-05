@@ -42,7 +42,6 @@ export const BottomBar = () => {
                <BottomNavigationAction
                   component={Link}
                   to='addresses' 
-                  //value={'addresses'}
                   label='Addresses'
                   icon={<HouseIcon />}
                ></BottomNavigationAction>

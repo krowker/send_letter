@@ -8,15 +8,17 @@ import { AddressCard } from '../components/AddressCard'
 
 export const AddressesPage = () => {
    return (
-      <Grid container spacing={1}>
+      <Grid container spacing={1}
+      
+      >
          <AddressCard></AddressCard>
          <AddressCard></AddressCard>
          <Fab
             color='primary'
             sx={{
-               position: 'fixed',
+               position: 'absolute',
                bottom: '65px',
-               right: '10px',
+               right: '15px',
             }}
 
          >

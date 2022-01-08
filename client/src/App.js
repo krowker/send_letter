@@ -10,6 +10,7 @@ function App() {
     <Container
       //fixed
       sx={{
+        position: 'relative',
         height: '100vh'
       }}
     >

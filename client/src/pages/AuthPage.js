@@ -11,6 +11,8 @@ import Button from '@mui/material/Button'
 //import Chip from '@mui/material/Chip'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Link } from "react-router-dom";
+
 
 export const AuthPage = () => {
    const [values, setValues] = useState({
@@ -114,6 +116,8 @@ export const AuthPage = () => {
                <Chip label="or"/>
             </Divider> */}
             <Button
+               component={Link}
+               to='../registration'
                variant='outlined'
                sx={{
                   m: 3

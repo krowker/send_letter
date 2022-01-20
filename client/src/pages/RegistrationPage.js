@@ -4,7 +4,7 @@ import {
    IconButton,
    InputAdornment,
    Typography,
-   Divider
+   Button
 } from '@mui/material'
 import {
    Visibility,
@@ -40,7 +40,8 @@ export const RegistrationPage = () => {
             sx={{
                height: '100vh',
                display: 'flex',
-               justifyContent: 'center',
+               justifyContent:'center',
+               justifyContent: {xl: 'center'},
                alignItems: 'center',
                flexDirection: 'column'
             }}
@@ -89,7 +90,6 @@ export const RegistrationPage = () => {
                   }}
                />
             </Box>
-            <Divider/>
             <Typography>How to sign a letter for you</Typography>
             <Box>
                <TextField
@@ -161,7 +161,7 @@ export const RegistrationPage = () => {
                   />
                </Box>
             </Box>
-
+            <Button>Submit</Button>
          </Box>
       </>
    )

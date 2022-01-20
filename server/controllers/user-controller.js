@@ -1,5 +1,5 @@
 const {validationResult} = require ('express-validator')
-const UserService = require ('../service/user-service')
+const userService = require ('../service/user-service')
 const ApiError = require ('../exceptions/api-error')
 
 class UserController {
@@ -62,6 +62,14 @@ class UserController {
    }
 
    async getContacts (req, res, next){
+      try {
+         
+      } catch (e) {
+         next(e)
+      }
+   }
+
+   async getNotifications (req, res, next){
       try {
          
       } catch (e) {

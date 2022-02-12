@@ -10,7 +10,7 @@ class UserService {
    async registration (email, password) {
       const condidate =  await UserModel.findOne({email})
       if (condidate) {
-         throw ApiError.BadRequest(`${email} уже зарегистрирован`)
+         throw ApiError.BadRequest(`${email} already exist`)
       }
       const hashPassword = await bcrypt.hash(password, 3)
       const activationLink = uuid.v4()
@@ -28,7 +28,7 @@ class UserService {
    async activate (activationLink) {
       const user = await UserModel.findOne({activationLink})
       if (!user) {
-         throw ApiError.BadRequest('Неверная ссылка активации')
+         throw ApiError.BadRequest('Invalid activation link')
       }
       user.isActivated = true
       await user.save()
@@ -70,6 +70,11 @@ class UserService {
       await tokenService.saveToken(userDto.id, tokens.refreshToken)
 
       return {...tokens, user: userDto}
+   }
+
+   async getContact() {
+      const user = await UserModel.find()
+      return user
    }
 }
 

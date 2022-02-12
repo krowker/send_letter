@@ -7,7 +7,7 @@ class UserController {
       try {
          const errors = validationResult(req)
          if(!errors.isEmpty()) {
-            return next(ApiError.BadRequest('Ошибка валидации', errors.array()))
+            return next(ApiError.BadRequest('Check input data', errors.array()))
          }
          const {email, password} = req.body
          const userData = await userService.registration(email, password)
@@ -63,7 +63,8 @@ class UserController {
 
    async getContacts (req, res, next){
       try {
-         
+         const user = await userService.getContact()
+         return res.json(user)
       } catch (e) {
          next(e)
       }

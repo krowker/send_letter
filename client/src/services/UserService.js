@@ -1,7 +1,7 @@
 import $api from "../http";
 
 export default class UserService {
-   static async getAddreses (email, password) {
+   static async getAddreses () {
       return $api.get ('/addresses')
    }
 }

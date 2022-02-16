@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 
 export const AuthPage = () => {
    const [values, setValues] = useState({
+      email: '',
       password: '',
       showpassword: false,
    })
@@ -55,6 +56,8 @@ export const AuthPage = () => {
             >SendLetter</Typography>
             <TextField
                id="input-with-icon-textfield"
+               value={values.email}
+               onChange={handleChange('email')}
                label="Username"
                variant="outlined"
                sx={{

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect} from 'react'
 import { BottomBar } from './components/BottomNavigation'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { AddressesPage } from './pages/AddressesPage'
@@ -7,12 +7,23 @@ import { NotificationsPage } from './pages/NotificationsPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { RegistrationPage } from './pages/RegistrationPage'
 
+import { Context } from './index'
 
-export const useRoutes = (isAuthenticated) => {
 
-   isAuthenticated = false
 
-   if (isAuthenticated) {
+export function useRoutes() {
+   const {store}=useContext(Context)
+   //const [isA, setIsA]=useState(store.isAuth)
+
+   useEffect(()=>{
+      if (localStorage.getItem('token')) {
+         store.cheAuth()
+      }
+   }, [])
+
+   console.log('isAuth '+store.isAuth);
+
+   if (store.isAuth) {
       return (
          <Routes>
             <Route path='/' element={<BottomBar />}>
@@ -33,3 +44,5 @@ export const useRoutes = (isAuthenticated) => {
       </Routes>
    )
 }
+
+//export default useRoutes()

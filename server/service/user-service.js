@@ -64,7 +64,7 @@ class UserService {
       if (!tokenFromDb || !userData) {
          throw ApiError.UnautharizedError()
       }
-      const user = await UserModel.findById(user.id)
+      const user = await UserModel.findById(userData.id)
       const userDto = new UserDto(user)
       const tokens = tokenService.generateTokens({...userDto})
       await tokenService.saveToken(userDto.id, tokens.refreshToken)

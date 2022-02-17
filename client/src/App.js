@@ -2,9 +2,10 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { useRoutes } from './routes'
 import Container from '@mui/material/Container'
+import {observer} from 'mobx-react-lite'
 
 function App() {
-  const routes = useRoutes(false)
+  const routes = useRoutes()
 
   return (
     <Container
@@ -21,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);

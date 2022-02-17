@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -13,9 +13,11 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { Link } from "react-router-dom";
+import { Context } from '../index'
 
 
 export const AuthPage = () => {
+   const {store} = useContext(Context)
    const [values, setValues] = useState({
       email: '',
       password: '',
@@ -99,6 +101,7 @@ export const AuthPage = () => {
                }}
             />
             <Button
+               onClick={()=>store.login(values.email, values.password)}
                variant="contained"
                sx={{
                   m: 1,

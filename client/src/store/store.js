@@ -6,6 +6,7 @@ import { API_URL } from '../http'
 export default class Store {
    user = {}
    isAuth = false
+   isLoading=false
 
    constructor() {
       makeAutoObservable(this)
@@ -17,6 +18,10 @@ export default class Store {
    
    setUser(user) {
       this.user = user
+   }
+
+   setLoading(bool) {
+      this.isLoading=bool
    }
 
    async login (email, password) {
@@ -53,7 +58,8 @@ export default class Store {
       }
    }
 
-   async cheAuth () {
+   async checkAuth () {
+      this.setLoading(true)
       try {
          const response = await axios.get(`${API_URL}/refresh`, {withCredentials: true})
          localStorage.setItem('token', response.data.accessToken)
@@ -61,6 +67,8 @@ export default class Store {
          this.setUser(response.data.user)
       } catch (e) {
          console.log(e.response?.data?.message)
+      } finally{
+         this.setLoading(false)
       }
    }
 }

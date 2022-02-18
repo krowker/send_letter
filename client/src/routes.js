@@ -6,23 +6,28 @@ import { AuthPage } from './pages/AuthPage'
 import { NotificationsPage } from './pages/NotificationsPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { RegistrationPage } from './pages/RegistrationPage'
-
 import { Context } from './index'
 
 
-
 export function useRoutes() {
-   const {store}=useContext(Context)
-   //const [isA, setIsA]=useState(store.isAuth)
 
-   useEffect(()=>{
-      if (localStorage.getItem('token')) {
-         store.cheAuth()
-      }
+   const { store } = useContext(Context)
+
+   useEffect(() => {
+     if (localStorage.getItem('token')) {
+       store.checkAuth()
+     }
    }, [])
+   console.log(store.isAuth);
 
-   console.log('isAuth '+store.isAuth);
 
+   if (store.isLoading){
+      return(
+         <div>
+            Loading////
+         </div>
+      )
+   }
    if (store.isAuth) {
       return (
          <Routes>
@@ -44,5 +49,3 @@ export function useRoutes() {
       </Routes>
    )
 }
-
-//export default useRoutes()

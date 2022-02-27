@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BottomBar } from './components/BottomNavigation'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { AddressesPage } from './pages/AddressesPage'
@@ -8,44 +8,51 @@ import { ProfilePage } from './pages/ProfilePage'
 import { RegistrationPage } from './pages/RegistrationPage'
 import { Context } from './index'
 
+import { RequireAuth } from './hoc/RequireAuth'
+
 
 export function useRoutes() {
 
-   const { store } = useContext(Context)
+   //const { store } = useContext(Context)
 
-   useEffect(() => {
-     if (localStorage.getItem('token')) {
-       store.checkAuth()
-     }
-   }, [])
-   console.log(store.isAuth);
+   // useEffect(() => {
+   //    if (localStorage.getItem('token')) {
+   //       store.checkAuth()
+   //    }
+   // }, [])
+   //console.log(store.isAuth);
 
 
-   if (store.isLoading){
-      return(
-         <div>
-            Loading////
-         </div>
-      )
-   }
-   if (store.isAuth) {
+   // if (store.isLoading) {
+   //    return (
+   //       <div>
+   //          Loading////
+   //       </div>
+   //    )
+   // }
+  // if (store.isAuth) {
       return (
          <Routes>
             <Route path='/' element={<BottomBar />}>
-               <Route path='addresses' element={<AddressesPage />} />
+               <Route path='addresses' element={
+                  <RequireAuth>
+                     <AddressesPage />
+                  </RequireAuth>} />
                <Route path='notifications' element={<NotificationsPage />} />
                <Route path='profile' element={<ProfilePage />} />
+               <Route path='/auth' element={<AuthPage />} />
+
                <Route path='*' element={<Navigate to='/addresses' />} />
             </Route>
          </Routes>
       )
-   }
+  // }
 
-   return (
-      <Routes>
-         <Route path='/auth' element={<AuthPage />} />
-         <Route path='/registration' element={<RegistrationPage />} />
-         <Route path='*' element={<Navigate to='/auth' />} />
-      </Routes>
-   )
+   // return (
+   //    <Routes>
+   //       <Route path='/auth' element={<AuthPage />} />
+   //       <Route path='/registration' element={<RegistrationPage />} />
+   //       <Route path='*' element={<Navigate to='/auth' />} />
+   //    </Routes>
+   // )
 }

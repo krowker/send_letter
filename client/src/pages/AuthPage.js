@@ -12,11 +12,15 @@ import Button from '@mui/material/Button'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from '../index'
 
 
 export const AuthPage = () => {
+   const navigate = useNavigate()
+   const location = useLocation()
+
+   const fromPage = location.state?.from?.pathname || '/'
    const {store} = useContext(Context)
    const [values, setValues] = useState({
       email: '',

@@ -5,11 +5,14 @@ import {
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { AddressCard } from '../components/AddressCard'
+import { BottomBar } from '../components/BottomNavigation'
 
 export const AddressesPage = () => {
    return (
-      <Grid container spacing={1}
-      
+      <>
+      <Grid      
+         container
+         spacing={1}
       >
          <AddressCard></AddressCard>
          <AddressCard></AddressCard>
@@ -25,5 +28,7 @@ export const AddressesPage = () => {
             <AddIcon />
          </Fab>
       </Grid>
+      <BottomBar />
+      </>
    )
 }

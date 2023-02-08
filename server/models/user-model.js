@@ -5,7 +5,7 @@ const UserSchema = new Schema ({
    password: {type: String, required: true},
    isActivated: {type: Boolean,  default: false},
    activationLink: {type: String},
-   address: {type: String},
+   address: {type: Schema.Types.ObjectId, ref: 'Address'},
    gender: {type: String},
    contacts: [{type: Schema.Types.ObjectId, ref: 'Contact'}],
    notifications: [{type: Schema.Types.ObjectId, ref: 'Notification'}]

@@ -1,4 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
+
+import useAuthStore from '../store/useAuthStore.jsx'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -7,13 +9,10 @@ import InputAdornment from '@mui/material/InputAdornment'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import { IconButton } from '@mui/material';
 import Button from '@mui/material/Button'
-//import Divider from '@mui/material/Divider'
-//import Chip from '@mui/material/Chip'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Context } from '../index'
 
 
 export const AuthPage = () => {
@@ -21,7 +20,9 @@ export const AuthPage = () => {
    const location = useLocation()
 
    const fromPage = location.state?.from?.pathname || '/'
-   const {store} = useContext(Context)
+
+   const login = useAuthStore((state) => state.login)
+
    const [values, setValues] = useState({
       email: '',
       password: '',
@@ -105,7 +106,7 @@ export const AuthPage = () => {
                }}
             />
             <Button
-               onClick={()=>store.login(values.email, values.password)}
+               onClick={()=> {login(values.email, values.password)}}
                variant="contained"
                sx={{
                   m: 1,
@@ -118,14 +119,6 @@ export const AuthPage = () => {
                   p: 1
                }}
             >Forgot password?</Button>
-            {/* <Divider
-               variant='middle'
-               sx={{
-                  m: 1
-               }}
-            >
-               <Chip label="or"/>
-            </Divider> */}
             <Button
                component={Link}
                to='../registration'

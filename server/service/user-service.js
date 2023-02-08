@@ -7,7 +7,7 @@ const mailService = require ('./mail-service')
 const ApiError = require('../exceptions/api-error')
 
 class UserService {
-   async registration (email, password) {
+   async registration (email, password, data) {
       const condidate =  await UserModel.findOne({email})
       if (condidate) {
          throw ApiError.BadRequest(`${email} already exist`)
@@ -26,10 +26,10 @@ class UserService {
    }
 
    async activate (activationLink) {
-      const user = await UserModel.findOne({activationLink})
-      if (!user) {
-         throw ApiError.BadRequest('Invalid activation link')
-      }
+      // const user = await UserModel.findOne({activationLink})
+      // if (!user) {
+      //    throw ApiError.BadRequest('Invalid activation link')
+      // }
       user.isActivated = true
       await user.save()
    }

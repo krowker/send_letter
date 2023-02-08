@@ -7,6 +7,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction'
 import HouseIcon from '@mui/icons-material/House';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
+
 import { Link, Outlet } from "react-router-dom";
 
 export const BottomBar = () => {
@@ -41,19 +42,19 @@ export const BottomBar = () => {
             >
                <BottomNavigationAction
                   component={Link}
-                  to='addresses' 
+                  to='/addresses' 
                   label='Addresses'
                   icon={<HouseIcon />}
                ></BottomNavigationAction>
                <BottomNavigationAction   
                   component={Link}
-                  to='notifications'               
+                  to='/notifications'               
                   label='Notifications'
                   icon={<NotificationsIcon />}
                />
                <BottomNavigationAction
                   component={Link}
-                  to='profile'
+                  to='/profile'
                   label='Profile'
                   icon={<PersonIcon />}
                />

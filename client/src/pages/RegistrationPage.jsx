@@ -12,15 +12,36 @@ import {
    AccountCircle
 } from '@mui/icons-material';
 import React, { useState } from 'react'
+import AuthService from '../services/AuthServise';
 
 export const RegistrationPage = () => {
    const [values, setValues] = useState({
+      email: '',
       password: '',
       showpassword: false,
    })
 
+   const [data, setData] = useState({
+      name: '',
+      surname: '',
+      fathersName: '',
+      country: '',
+      city: '',
+      zipCode: '',
+      streetAndBuilding: '',
+      aprtment: '',
+      remark: ''
+   })
+
+   const registarion = async (email, password, data) => {
+      await AuthService.registration(email, password, data)
+   }
+
    const handleChange = (prop) => (event) => {
       setValues({ ...values, [prop]: event.target.value })
+   }
+   const handleChangeData = (prop) => (event) => {
+      setData({ ...data, [prop]: event.target.value })
    }
 
    const handleClickShowPassword = () => {
@@ -41,8 +62,9 @@ export const RegistrationPage = () => {
                height: '100vh',
                display: 'flex',
                justifyContent:'center',
-               justifyContent: {xl: 'center'},
+               // justifyContent: {xl: 'center'},
                alignItems: 'center',
+               // alignContent: 'center',
                flexDirection: 'column'
             }}
          >
@@ -94,6 +116,8 @@ export const RegistrationPage = () => {
             <Box>
                <TextField
                   label='Name'
+                  value={data.name}
+                  onChange={handleChangeData('name')}
                   variant="outlined"
                   sx={{
                      m: 1
@@ -101,6 +125,8 @@ export const RegistrationPage = () => {
                />
                <TextField
                   label='Surname'
+                  value={data.surname}
+               onChange={handleChangeData('surname')}
                   variant="outlined"
                   sx={{
                      m: 1
@@ -108,6 +134,8 @@ export const RegistrationPage = () => {
                />
                <TextField
                   label="Father's name"
+                  value={data.fathersName}
+                  onChange={handleChangeData('fathersName')}
                   variant="outlined"
                   sx={{
                      m: 1
@@ -116,6 +144,8 @@ export const RegistrationPage = () => {
                <Box>
                   <TextField
                      label='Country'
+                     value={data.country}
+                     onChange={handleChangeData('country')}
                      variant='outlined'
                      sx={{
                         m: 1
@@ -123,6 +153,8 @@ export const RegistrationPage = () => {
                   />
                   <TextField
                      label='City'
+                     value={data.city}
+                     onChange={handleChangeData('city')}
                      variant='outlined'
                      sx={{
                         m: 1
@@ -130,6 +162,8 @@ export const RegistrationPage = () => {
                   />
                   <TextField
                      label='Zip code'
+                     value={data.zipCode}
+                     onChange={handleChangeData('zipCode')}
                      variant='outlined'
                      sx={{
                         m: 1
@@ -139,6 +173,8 @@ export const RegistrationPage = () => {
                <Box>
                   <TextField
                      label='Street and building'
+                     value={data.streetAndBuilding}
+                     onChange={handleChangeData('streetAndBuilding')}
                      variant='outlined'
                      sx={{
                         m: 1
@@ -146,6 +182,8 @@ export const RegistrationPage = () => {
                   />
                   <TextField
                      label='Apartment'
+                     value={data.aprtment}
+                     onChange={handleChangeData('aprtment')}
                      type='number'
                      variant='outlined'
                      sx={{
@@ -154,6 +192,8 @@ export const RegistrationPage = () => {
                   />
                   <TextField
                      label='Remark'
+                     value={data.remark}
+                     onChange={handleChangeData('remark')}
                      variant='outlined'
                      sx={{
                         m: 1
@@ -161,7 +201,9 @@ export const RegistrationPage = () => {
                   />
                </Box>
             </Box>
-            <Button>Submit</Button>
+            <Button
+            onClick={()=>{console.log({...data})}}
+            >Submit</Button>
          </Box>
       </>
    )

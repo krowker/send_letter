@@ -8,7 +8,7 @@ const AddressSchema = new Schema ({
     city: {type: String, required: true},
     zipCode: {type: String},
     streetAndBuilding: {type: String, required: true},
-    aprtment: {type: String},
+    apartment: {type: String},
     remark: {type: String},
 })
 

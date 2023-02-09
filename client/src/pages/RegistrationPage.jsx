@@ -1,3 +1,7 @@
+import React, { useState } from 'react'
+
+import useAuthStore from '../store/useAuthStore.jsx'
+
 import {
    Box,
    TextField,
@@ -11,10 +15,11 @@ import {
    VisibilityOff,
    AccountCircle
 } from '@mui/icons-material';
-import React, { useState } from 'react'
-import AuthService from '../services/AuthServise';
 
 export const RegistrationPage = () => {
+   const registration = useAuthStore((state) => state.registration)
+
+
    const [values, setValues] = useState({
       email: '',
       password: '',
@@ -29,13 +34,9 @@ export const RegistrationPage = () => {
       city: '',
       zipCode: '',
       streetAndBuilding: '',
-      aprtment: '',
+      apartment: '',
       remark: ''
    })
-
-   const registarion = async (email, password, data) => {
-      await AuthService.registration(email, password, data)
-   }
 
    const handleChange = (prop) => (event) => {
       setValues({ ...values, [prop]: event.target.value })
@@ -73,6 +74,8 @@ export const RegistrationPage = () => {
                   id="input-with-icon-textfield"
                   label="Username"
                   variant="outlined"
+                  value={values.email}
+                  onChange={handleChange('email')}
                   sx={{
                      m: 1,
                   }}
@@ -182,8 +185,8 @@ export const RegistrationPage = () => {
                   />
                   <TextField
                      label='Apartment'
-                     value={data.aprtment}
-                     onChange={handleChangeData('aprtment')}
+                     value={data.apartment}
+                     onChange={handleChangeData('apartment')}
                      type='number'
                      variant='outlined'
                      sx={{
@@ -202,8 +205,9 @@ export const RegistrationPage = () => {
                </Box>
             </Box>
             <Button
-            onClick={()=>{console.log({...data})}}
-            >Submit</Button>
+               onClick={()=>{registration(values.email, values.password, data)}}
+            >Submit
+            </Button>
          </Box>
       </>
    )

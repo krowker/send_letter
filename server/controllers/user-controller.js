@@ -9,8 +9,8 @@ class UserController {
          if(!errors.isEmpty()) {
             return next(ApiError.BadRequest('Check input data', errors.array()))
          }
-         const {email, password} = req.body
-         const userData = await userService.registration(email, password)
+         const {email, password, data} = req.body
+         const userData = await userService.registration(email, password, data)
          res.cookie ('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true}) //for https sequre: true
          return res.json(userData)
       } catch (e) {

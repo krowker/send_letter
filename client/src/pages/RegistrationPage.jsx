@@ -205,7 +205,7 @@ export const RegistrationPage = () => {
                </Box>
             </Box>
             <Button
-               onClick={()=>{registration(values.email, values.password, data)}}
+               onClick={()=>{registration(values.email, values.password, {...data})}}
             >Submit
             </Button>
          </Box>

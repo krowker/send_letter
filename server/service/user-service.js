@@ -18,7 +18,7 @@ class UserService {
       const user = await UserModel.create({
          email,
          password: hashPassword,
-         address: {...data}
+         address: data
       })
       //await mailService.sendActivationmail(email, `${process.env.API_URL}/api/activate/${activationLink}`)
 

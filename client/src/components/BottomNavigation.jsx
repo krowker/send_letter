@@ -8,22 +8,13 @@ import HouseIcon from '@mui/icons-material/House';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 
-import { Link, Outlet } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 export const BottomBar = () => {
    const [value, setValue] = useState(0)
 
    return (
       <>
-      <Grid
-         container
-         direction="column"
-         justifyContent="space-evenly"
-      >
-         <Grid item xs={12}>
-            <Outlet/>
-         </Grid>
-         <Grid item xs={12}>
          <Paper
             sx={{
                position: 'fixed',
@@ -60,8 +51,6 @@ export const BottomBar = () => {
                />
             </BottomNavigation>
          </Paper>
-         </Grid>
-      </Grid>         
       </>
    )
 }

@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React, {useContext} from 'react'
+import React from 'react'
 import { BottomBar } from '../components/BottomNavigation'
 import useAuthStore from '../store/useAuthStore'
 

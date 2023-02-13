@@ -10,7 +10,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 import { Link} from "react-router-dom";
 
-export const BottomBar = () => {
+export default function BottomBar() {
    const [value, setValue] = useState(0)
 
    return (

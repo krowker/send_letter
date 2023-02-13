@@ -16,7 +16,7 @@ import {
    AccountCircle
 } from '@mui/icons-material';
 
-export const RegistrationPage = () => {
+export default function RegistrationPage() {
    const registration = useAuthStore((state) => state.registration)
 
 

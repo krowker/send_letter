@@ -2,20 +2,13 @@ import React, { useEffect, lazy, Suspense } from 'react'
 
 import { Route, Routes, Navigate } from 'react-router-dom'
 
-import { AddressesPage } from './pages/AddressesPage'
-import { AuthPage } from './pages/AuthPage'
-import { NotificationsPage } from './pages/NotificationsPage'
-// import { ProfilePage } from './pages/ProfilePage'
-import { RegistrationPage } from './pages/RegistrationPage'
-
 import useAuthStore from './store/useAuthStore'
 
-const ProfilePage = lazy(() => 
-   import("./pages/ProfilePage").then(module => {
-      return{default: module.ProfilePage}
-   })
-)
-
+const AddressesPage = lazy(() => import('./pages/AddressesPage.jsx'))
+const ProfilePage = lazy(() => import("./pages/ProfilePage.jsx"))
+const AuthPage = lazy(() => import("./pages/AuthPage.jsx"))
+const NotificationsPage = lazy(() => import("./pages/NotificationsPage.jsx"))
+const RegistrationPage = lazy(() => import("./pages/RegistrationPage.jsx"))
 
 export function useRoutes() {
    const checkAuth = useAuthStore((state) => state.checkAuth)
@@ -30,18 +23,17 @@ export function useRoutes() {
    if(isAuth) {
       return (
          <Routes>
-               <Route path='addresses' element={<AddressesPage />} />
-               <Route path='notifications' element={<NotificationsPage />} />
-               {/* <Suspense fallback={<h1>Loading...</h1>}><ProfilePage /></Suspense> */}
-               <Route path='profile' element={<Suspense fallback={<h1>Loading...</h1>}><ProfilePage /></Suspense>} />
-               <Route path='*' element={<Navigate to='/addresses' />} />
+            <Route path='addresses' element={<Suspense><AddressesPage /></Suspense>} />
+            <Route path='notifications' element={<Suspense><NotificationsPage /></Suspense>} />
+            <Route path='profile' element={<Suspense><ProfilePage /></Suspense>} />
+            <Route path='*' element={<Navigate to='/addresses' />} />
          </Routes>
       )
    } else {
       return (
          <Routes>
-            <Route path='/auth' element={<AuthPage />} />
-            <Route path='/registration' element={<RegistrationPage />} />
+            <Route path='/auth' element={<Suspense><AuthPage /></Suspense>} />
+            <Route path='/registration' element={<Suspense><RegistrationPage /></Suspense>} />
             <Route path='*' element={<Navigate to='/auth' />} />
          </Routes>
       )

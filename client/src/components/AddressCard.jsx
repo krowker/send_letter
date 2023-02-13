@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import React from 'react'
 
-export const AddressCard = () => {
+export default function AddressCard() {
 
    return (
       <>

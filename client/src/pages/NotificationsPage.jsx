@@ -1,7 +1,7 @@
 import React from 'react'
-import { BottomBar } from '../components/BottomNavigation'
+import BottomBar from '../components/BottomNavigation.jsx'
 
-export const NotificationsPage = () => {
+export default function  NotificationsPage() {
    return (
       <>
       <div>NotificationsPage</div>

@@ -4,10 +4,10 @@ import {
    Fab
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
-import { AddressCard } from '../components/AddressCard'
-import { BottomBar } from '../components/BottomNavigation'
+import AddressCard from '../components/AddressCard.jsx'
+import BottomBar from '../components/BottomNavigation.jsx'
 
-export const AddressesPage = () => {
+export default function AddressesPage() {
    return (
       <>
       <Grid      

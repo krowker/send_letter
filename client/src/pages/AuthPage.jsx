@@ -15,7 +15,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
-export const AuthPage = () => {
+export default function AuthPage() {
    const navigate = useNavigate()
    const location = useLocation()
 

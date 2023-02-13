@@ -1,5 +1,5 @@
 import React from 'react'
-import BottomBar from '../components/BottomNavigation.jsx'
+import BottomBar from '../../components/BottomNavigation.jsx'
 
 export default function  NotificationsPage() {
    return (

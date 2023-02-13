@@ -4,8 +4,8 @@ import {
    Fab
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
-import AddressCard from '../components/AddressCard.jsx'
-import BottomBar from '../components/BottomNavigation.jsx'
+import AddressCard from './components/AddressCard.jsx'
+import BottomBar from '../../components/BottomNavigation.jsx'
 
 export default function AddressesPage() {
    return (

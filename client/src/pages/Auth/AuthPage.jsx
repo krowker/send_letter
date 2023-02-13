@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import useAuthStore from '../store/useAuthStore.jsx'
+import useAuthStore from '../../store/useAuthStore.jsx'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'

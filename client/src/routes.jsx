@@ -4,10 +4,10 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 
 import useAuthStore from './store/useAuthStore'
 
-const AddressesPage = lazy(() => import('./pages/AddressesPage.jsx'))
-const ProfilePage = lazy(() => import("./pages/ProfilePage.jsx"))
-const AuthPage = lazy(() => import("./pages/AuthPage.jsx"))
-const NotificationsPage = lazy(() => import("./pages/NotificationsPage.jsx"))
+const AddressesPage = lazy(() => import('./pages/Addresses/AddressesPage.jsx'))
+const ProfilePage = lazy(() => import("./pages/Profile/ProfilePage.jsx"))
+const AuthPage = lazy(() => import("./pages/Auth/AuthPage.jsx"))
+const NotificationsPage = lazy(() => import("./pages/Notifications/NotificationsPage.jsx"))
 const RegistrationPage = lazy(() => import("./pages/RegistrationPage.jsx"))
 
 export function useRoutes() {

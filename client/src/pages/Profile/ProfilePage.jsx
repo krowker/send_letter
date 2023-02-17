@@ -1,18 +1,17 @@
-import { TextField, Typography, Grid, Stack, Box } from "@mui/material";
+import { TextField, Typography, Grid, Stack, Box, Button } from "@mui/material";
 import React, { useEffect } from "react";
 
 import BottomBar from "../../components/BottomNavigation.jsx";
 import Header from "./components/Header.jsx";
-import useAuthStore from "../../store/useAuthStore";
 import useUserStore from "../../store/useUserStore.jsx";
 
 export default function ProfilePage() {
-    const user = useAuthStore((state) => state.user);
     const getUser = useUserStore((state) => state.getUser);
     useEffect(() => {
+        console.log(user.id);
         getUser(user.id);
     }, []);
-    const fullUser = useUserStore((state) => state.user);
+    const user = useUserStore((state) => state.user);
 
     return (
         <>

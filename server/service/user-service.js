@@ -81,8 +81,10 @@ class UserService {
     return user;
   }
 
-  async getUser(id) {
-    const user = await UserModel.findById(id);
+  async getUser(refreshToken) {
+    const userData = tokenService.validateRefreshToken(refreshToken);
+    const user = await UserModel.findById(userData.id);
+
     return user;
   }
 }

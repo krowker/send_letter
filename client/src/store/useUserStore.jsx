@@ -8,9 +8,9 @@ const useUserStore = create(
   devtools((set) => ({
     user: {},
 
-    getUser: async (id) => {
+    getUser: async () => {
       try {
-        const response = await UserService.getUser(id);
+        const response = await UserService.getUser();
         set({
           user: response,
         });

@@ -88,8 +88,8 @@ class UserController {
 
         async getUser(req, res, next) {
                 try {
-                        const { id } = req.body;
-                        const user = await userService.getUser(id);
+                        const { refreshToken } = req.cookies;
+                        const user = await userService.getUser(refreshToken);
                         return res.json(user);
                 } catch (e) {
                         next(e);

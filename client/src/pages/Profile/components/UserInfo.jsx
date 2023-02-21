@@ -1,65 +1,82 @@
-import React, {useLayoutEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import useUserStore from "../../../store/useUserStore.jsx";
 import {TextField, Stack} from '@mui/material'
 
 export default function UserInfo({user}) {
+   const [newData, setNewData] = useState({...user})
+   useEffect(()=>{
+      setNewData(({...user}))
+   },[user])
+   
+   const handleChangeData = (prop) => (event) => {
+      setNewData({ ...newData, address: {...newData.address, [prop]: event.target.value }})
+   }
    return(<>
       <Stack spacing={1}>
          <TextField
             label='Username'
-            value={user.email}
+            value={newData.email}
             variant='outlined'
-            // onChange={ e => {
-            //    setUser({
-            //       ...user,
-            //       email: e.target.value
-            //    })
-            // }}
+            onChange={ e => {
+               setNewData({
+                  ...newData,
+                  email: e.target.value
+               })
+            }}
          />
          <TextField
             label='Name'
-            value={user.address.name}
+            value={newData.address.name}
             variant='outlined'
+            onChange={handleChangeData('name')}
          />
          <TextField
             label='Surname'
-            value={user.address.surname}
+            value={newData.address.surname}
             variant='outlined'
+            onChange={handleChangeData('surname')}
          />
          <TextField
             label="Father's name"
-            value={user.address.fathersName}
+            value={newData.address.fathersName}
             variant='outlined'
+            onChange={handleChangeData('fathersName')}
          />
          <TextField
             label='Country'
-            value={user.address.country}
+            value={newData.address.country}
             variant='outlined'
+            onChange={handleChangeData('country')}
          />
          <TextField
             label='City'
-            value={user.address.city}
+            value={newData.address.city}
             variant='outlined'
+            onChange={handleChangeData('city')}
          />
          <TextField
             label='Zip code'
-            value={user.address.zipCode}
+            value={newData.address.zipCode}
             variant='outlined'
+            onChange={handleChangeData('zipCode')}
          />
          <TextField
             label='Street and building'
-            value={user.address.streetAndBuilding}
+            value={newData.address.streetAndBuilding}
             variant='outlined'
+            onChange={handleChangeData('streetAndBuilding')}
          />
          <TextField
             label='Apartment'
-            value={user.address.apartment}
+            value={newData.address.apartment}
             variant='outlined'
+            onChange={handleChangeData('apartment')}
          />
          <TextField
             label='Remark'
-            value={user.address.Remark}
+            value={newData.address.remark}
             variant='outlined'
+            onChange={handleChangeData('remark')}
          />
       </Stack>
    </>)

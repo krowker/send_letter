@@ -87,6 +87,14 @@ class UserService {
 
     return user;
   }
+
+  async updateUser(refreshToken, update) {
+    const userData = tokenService.validateRefreshToken(refreshToken);
+    await UserModel.findByIdAndUpdate(userData.id, {email: update.email, address: update.address});
+
+    const user = await UserModel.findById(userData.id)
+    return user;
+  }
 }
 
 module.exports = new UserService();

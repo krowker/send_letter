@@ -7,13 +7,12 @@ import useUserStore from "../../store/useUserStore.jsx";
 import UserInfo from "./components/UserInfo.jsx";
 
 export default function ProfilePage() {
-    const [isLoaded, setIsLoaded] = useState(false);
+    //const [isLoaded, setIsLoaded] = useState(false);
 
     const getUser = useUserStore((state) => state.getUser);
     useEffect(() => {
         getUser();
-        setIsLoaded(true);
-    }, [isLoaded]);
+    }, []);
     const user = useUserStore((state) => state.user);
 
     return (

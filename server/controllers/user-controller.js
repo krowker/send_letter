@@ -95,6 +95,20 @@ class UserController {
                         next(e);
                 }
         }
+
+        async updateUser (req, res, next) {
+                try {
+                        const { refreshToken } = req.cookies;
+                        const {...data} = req.body
+                        console.log(data);
+
+                        const user = await userService.updateUser(refreshToken, {...data})
+
+                        return res.json(user)
+                } catch (e) {
+                        next(e)
+                }
+        }
 }
 
 module.exports = new UserController();

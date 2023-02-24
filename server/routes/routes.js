@@ -18,5 +18,6 @@ router.get("/refresh", UserController.refresh);
 router.get("/addresses", authMiddleware, UserController.getContacts);
 router.get("/notifications", UserController.getNotifications);
 router.get("/getuser", authMiddleware, UserController.getUser);
+router.post("/updateuser", authMiddleware, UserController.updateUser)
 
 module.exports = router;

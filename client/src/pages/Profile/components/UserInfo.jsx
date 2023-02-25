@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import useUserStore from "../../../store/useUserStore.jsx";
-import {TextField, Stack} from '@mui/material'
+import {TextField, Stack, Button} from '@mui/material'
 
 export default function UserInfo({user}) {
+  const updateUser = useUserStore((state)=>state.updateUser)
+
    const [newData, setNewData] = useState({...user})
    useEffect(()=>{
       setNewData(({...user}))
@@ -78,6 +80,11 @@ export default function UserInfo({user}) {
             variant='outlined'
             onChange={handleChangeData('remark')}
          />
+         <Button
+         onClick={()=>{updateUser({...newData})}}
+         >
+            Update info
+         </Button>
       </Stack>
    </>)
 }

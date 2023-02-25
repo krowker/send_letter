@@ -99,7 +99,7 @@ class UserController {
         async updateUser (req, res, next) {
                 try {
                         const { refreshToken } = req.cookies;
-                        const {...data} = req.body
+                        const {...data} = req.body.data
                         console.log(data);
 
                         const user = await userService.updateUser(refreshToken, {...data})

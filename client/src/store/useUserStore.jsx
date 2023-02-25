@@ -22,13 +22,26 @@ const useUserStore = create(
     getUser: async () => {
       try {
         const response = await UserService.getUser();
+        
         set({
-          user: response.data,
+          user: {email: response.data.email, address: { ...response.data.address}},
         });
       } catch (e) {
         console.log(e.response?.data?.message);
       }
     },
+
+    updateUser: async (data) => {
+      try {
+        const response = await UserService.updateUser(data)
+
+        set({
+          user: response.data
+        })
+      } catch (e) {
+        console.log(e.response?.data?.message);
+      }
+    }
   }))
 );
 
